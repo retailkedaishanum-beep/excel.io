@@ -62,6 +62,17 @@
             padding: 4px 0;
             font-size: 12px;
         }
+        /* Highlighted cells for practice tasks */
+        .highlight-input {
+            background-color: #fffbeb !important; /* light yellow for cells requiring input */
+        }
+        .vlookup-table-header {
+            background-color: #d1fae5 !important; /* light green for VLOOKUP table header */
+            font-weight: bold;
+        }
+        .vlookup-table-data {
+            background-color: #f0fdf4 !important; /* very light green for VLOOKUP table data */
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -98,7 +109,7 @@
                  <button id="tab-bab5" role="tab" onclick="showTab('bab5')" class="tab-button px-4 py-3 text-sm transition-all text-gray-700">
                     5️⃣ Format & Cetak
                 </button>
-                <button id="tab-bab6" role="tab" onclick="showTab('bab6')" class="tab-button px-4 py-3 text-sm transition-all text-gray-700">
+                <button id="tab-bab6" role="tab" onclick="showTab('bab6')" class="tab-button px-4 py-3 text-sm transition-all text-gray-700 active">
                     6️⃣ Grafik & Visual
                 </button>
                 <button id="tab-bab7" role="tab" onclick="showTab('bab7')" class="tab-button px-4 py-3 text-sm transition-all text-gray-700">
@@ -110,7 +121,7 @@
                 <button id="tab-bab9" role="tab" onclick="showTab('bab9')" class="tab-button px-4 py-3 text-sm transition-all text-gray-700">
                     9️⃣ Validasi & Proteksi
                 </button>
-                <button id="tab-bab10" role="tab" onclick="showTab('bab10')" class="tab-button px-4 py-3 text-sm transition-all text-gray-700 active">
+                <button id="tab-bab10" role="tab" onclick="showTab('bab10')" class="tab-button px-4 py-3 text-sm transition-all text-gray-700">
                     🔟 Macros & VBA
                 </button>
             </div>
@@ -119,25 +130,7 @@
         <!-- Tab Content Containers -->
         <div id="content-container" class="flex-grow p-4 md:p-6 lg:p-8 max-w-7xl mx-auto w-full">
             
-            <!-- Template for Content Card Structure -->
-            <!--
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="lg:col-span-2 space-y-6">
-                    <div class="bg-white rounded-xl shadow-xl p-6">
-                        <h2 class="text-2xl font-bold text-indigo-600 mb-4 flex items-center"><span class="mr-2">📚</span> JUDUL BAB</h2>
-                        MATERI TEORI
-                    </div>
-                </div>
-                <div class="lg:col-span-1">
-                    <div class="bg-yellow-50 rounded-xl shadow-xl border-t-4 border-yellow-400 p-6">
-                        <h3 class="text-xl font-bold text-yellow-700 mb-4 flex items-center"><span class="mr-2">💡</span> Modul Praktik</h3>
-                        AREA PRAKTIK
-                    </div>
-                </div>
-            </div>
-            -->
-
-            <!-- BAB 1 Content -->
+            <!-- BAB 1 Content (Display: none) -->
             <div id="bab1" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
@@ -207,7 +200,7 @@
                 </div>
             </div>
 
-            <!-- BAB 2 Content -->
+            <!-- BAB 2 Content (Display: none) -->
             <div id="bab2" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
@@ -272,7 +265,7 @@
                 </div>
             </div>
             
-            <!-- BAB 3 Content -->
+            <!-- BAB 3 Content (Display: none) -->
             <div id="bab3" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
@@ -293,12 +286,14 @@
                     
                     <div class="lg:col-span-1">
                         <div class="bg-yellow-50 rounded-xl shadow-xl border-t-4 border-yellow-500 p-6 h-full">
-                            <h3 class="text-xl font-bold text-yellow-800 mb-4 flex items-center"><span class="mr-2">💡</span> Modul Praktik Bab 3: Menghitung Total dan Rata-Rata</h3>
+                            <h3 class="text-xl font-bold text-yellow-800 mb-4 flex items-center"><span class="mr-2">💡</span> Modul Praktik Bab 3: Menghitung Nilai dan Total Penjualan</h3>
                             <p class="text-gray-700 mb-4">
-                                **Tugas:** Gunakan data penjualan bulanan untuk mempraktikkan perkalian ($\mathbf{*}$) dan fungsi agregat ($\mathbf{SUM}$ dan $\mathbf{AVERAGE}$).<br>
-                                1. Sel **D2**: Tulis formula untuk menghitung total nilai $Unit \times Harga$ (Contoh: **`=B2*C2`**).<br>
-                                2. Sel **E10**: Tulis formula $SUM$ untuk total nilai.<br>
-                                3. Sel **E11**: Tulis formula $AVERAGE$ untuk rata-rata harga.
+                                **Data Acuan:** Gunakan data penjualan **Toshiba** dari Januari hingga Desember.<br>
+                                **Tugas Utama:** Hitung **Nilai Penjualan (Rp)** di Kolom **D** menggunakan harga unit $\mathbf{Rp 6.500.000}$ (diasumsikan berada di Sel **C3**).<br>
+                                
+                                1. Sel **D3**: Tulis formula untuk menghitung nilai penjualan: $\mathbf{Unit (B3) \times Harga (C3)}$. (Contoh: **`=B3*C3`**).
+                                2. Sel **D15**: Tulis formula $\mathbf{SUM}$ untuk menghitung **Total Nilai Penjualan**.
+                                3. Sel **B16**: Tulis formula $\mathbf{AVERAGE}$ untuk menghitung **Rata-rata Unit Terjual**.
                             </p>
                             <div id="spreadsheet-bab3" class="spreadsheet-container border border-gray-300 rounded-lg overflow-x-auto">
                                 <!-- Spreadsheet will be rendered here by JS -->
@@ -308,13 +303,13 @@
                 </div>
             </div>
 
-            <!-- BAB 4 Content -->
+            <!-- BAB 4 Content (Display: none) -->
             <div id="bab4" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
                         <div class="bg-white rounded-xl shadow-xl p-6">
                             <h2 class="text-2xl font-bold text-indigo-600 mb-4 flex items-center"><span class="mr-2">🧠</span> BAB 4: Formula dan Fungsi Lanjutan</h2>
-                            <p class="text-gray-700 mb-4 border-l-4 border-indigo-400 pl-3 italic bg-indigo-50 p-3 rounded-lg">Fokus pada fungsi pengambilan keputusan logis dan pencarian data otomatis.</p>
+                            <p class="text-gray-700 mb-4 border-l-4 border-indigo-400 pl-3 italic bg-indigo-50 p-3 rounded-lg">Fokus pada fungsi pengambilan keputusan logis ($IF$) dan pencarian data otomatis ($VLOOKUP$).</p>
                             
                             <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><span class="mr-2 text-teal-500">✅</span> 4.1 Fungsi Logika IF</h3>
                             <p class="text-gray-700 mb-2">Fungsi $\mathbf{IF}$ mengembalikan satu nilai jika hasil tes **TRUE** dan nilai lain jika **FALSE**.</p>
@@ -323,7 +318,7 @@
                             </div>
                             
                             <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><span class="mr-2 text-teal-500">🔍</span> 4.2 Fungsi Pencarian VLOOKUP</h3>
-                            <p class="text-gray-700 mb-2">Fungsi $\mathbf{VLOOKUP}$ (**Vertical Lookup**) mencari nilai di kolom paling kiri dan mengambil data dari kolom lain di baris yang sama.</p>
+                            <p class="text-gray-700 mb-2">Fungsi $\mathbf{VLOOKUP}$ (**Vertical Lookup**) mencari nilai di kolom paling kiri dan mengambil data dari kolom lain di baris yang sama. Dalam praktikum ini, kita akan mencari **Harga Satuan** berdasarkan **Kode Produk**.</p>
                             <div class="p-3 mb-4 bg-gray-100 rounded-md font-mono text-sm text-gray-800 border-l-4 border-red-400">
                                 =VLOOKUP(lookup\_value, table\_array, col\_index\_num, [range\_lookup])
                             </div>
@@ -334,9 +329,10 @@
                         <div class="bg-yellow-50 rounded-xl shadow-xl border-t-4 border-yellow-500 p-6 h-full">
                             <h3 class="text-xl font-bold text-yellow-800 mb-4 flex items-center"><span class="mr-2">💡</span> Modul Praktik Bab 4: IF dan VLOOKUP</h3>
                             <p class="text-gray-700 mb-4">
-                                **Tugas:** Terapkan fungsi IF dan VLOOKUP.<br>
-                                1. Sel **B2 (IF):** Tentukan Status Bonus: **`=IF(A2>=1000, "BONUS DITERIMA", "BELUM TERPENUHI")`**.<br>
-                                2. Sel **B5 (VLOOKUP):** Cari Deskripsi Produk berdasarkan kode di A5.
+                                **Data Acuan:** Tabel Pencarian Produk ($A9:C11$) dan Data Penjualan ($A2:C5$).<br>
+                                **Tugas 1 (IF - di C3):** Tentukan Status Bonus Sales. Jika Penjualan Unit ($\mathbf{B3}$) **lebih dari 100**, tulis $\mathbf{`BONUS`}$, jika tidak $\mathbf{`TIDAK ADA BONUS`}$. (Contoh: **`=IF(B3>100,"BONUS","TIDAK ADA BONUS")`**).
+                                <br>
+                                **Tugas 2 (VLOOKUP - di E11):** Cari **Harga Satuan** (Kolom ke-3) berdasarkan **Kode Produk (B11)** dari Tabel Pencarian.
                             </p>
                             <div id="spreadsheet-bab4" class="spreadsheet-container border border-gray-300 rounded-lg overflow-x-auto">
                                 <!-- Spreadsheet will be rendered here by JS -->
@@ -346,7 +342,7 @@
                 </div>
             </div>
             
-            <!-- BAB 5 Content -->
+            <!-- BAB 5 Content (Display: none) -->
             <div id="bab5" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
@@ -384,8 +380,8 @@
                 </div>
             </div>
 
-            <!-- BAB 6 Content -->
-            <div id="bab6" class="tab-content" style="display: none;">
+            <!-- BAB 6 Content (Display: block) -->
+            <div id="bab6" class="tab-content" style="display: block;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
                         <div class="bg-white rounded-xl shadow-xl p-6">
@@ -417,17 +413,19 @@
                             </table>
 
                             <h3 class="text-xl font-semibold text-gray-800 my-3 mt-5 flex items-center"><span class="mr-2 text-teal-500">🛠️</span> 6.2 Langkah Membuat Grafik</h3>
-                            <p class="text-gray-700">Pilih data $\to$ $Insert$ $\to$ Pilih Tipe Grafik.</p>
+                            <p class="text-gray-700">Pilih data $\to$ $Insert$ $\to$ Pilih Tipe Grafik. Setelah dibuat, Anda harus memodifikasi elemen seperti **Judul Grafik ($Chart Title$)** dan **Keterangan ($Legend$)** agar mudah dipahami.</p>
                         </div>
                     </div>
                     
                     <div class="lg:col-span-1">
                         <div class="bg-yellow-50 rounded-xl shadow-xl border-t-4 border-yellow-500 p-6 h-full">
-                            <h3 class="text-xl font-bold text-yellow-800 mb-4 flex items-center"><span class="mr-2">💡</span> Modul Praktik Bab 6: Data Tren</h3>
+                            <h3 class="text-xl font-bold text-yellow-800 mb-4 flex items-center"><span class="mr-2">💡</span> Modul Praktik Bab 6: Membuat Grafik Perbandingan</h3>
                             <p class="text-gray-700 mb-4">
-                                **Tugas:** Masukkan data berikut untuk visualisasi tren penjualan bulanan (Grafik Garis).<br>
-                                1. Sel **A1**: `BULAN`. Sel **B1**: `PENJUALAN (UNIT)`.<br>
-                                2. Input data **JAN** (745) hingga **JUN** (925).
+                                **Data Acuan:** Data Penjualan Unit Thosiba, Compaq, dan Accer (Januari - September).<br>
+                                **Tugas:** <br>
+                                1. Bayangkan Anda memilih rentang data **A2:D10** (Bulan dan Data Penjualan Unit).
+                                2. Pilih **Insert** dan buat **Clustered Column Chart** (Grafik Kolom).
+                                3. Ubah Judul Grafik menjadi **`PERBANDINGAN PENJUALAN UNIT 3 MEREK`**.
                             </p>
                             <div id="spreadsheet-bab6" class="spreadsheet-container border border-gray-300 rounded-lg overflow-x-auto">
                                 <!-- Spreadsheet will be rendered here by JS -->
@@ -437,7 +435,7 @@
                 </div>
             </div>
 
-            <!-- BAB 7 Content -->
+            <!-- BAB 7 Content (Display: none) -->
             <div id="bab7" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
@@ -474,7 +472,7 @@
                 </div>
             </div>
 
-            <!-- BAB 8 Content -->
+            <!-- BAB 8 Content (Display: none) -->
             <div id="bab8" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
@@ -524,7 +522,7 @@
                 </div>
             </div>
             
-            <!-- BAB 9 Content -->
+            <!-- BAB 9 Content (Display: none) -->
             <div id="bab9" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
@@ -561,8 +559,8 @@
                 </div>
             </div>
 
-            <!-- BAB 10 Content -->
-            <div id="bab10" class="tab-content" style="display: block;">
+            <!-- BAB 10 Content (Display: none) -->
+            <div id="bab10" class="tab-content" style="display: none;">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
                         <div class="bg-white rounded-xl shadow-xl p-6">
@@ -613,10 +611,46 @@
         const ROWS = 12; // Tetap 12 baris untuk konsistensi
         const COLS = 5; // A, B, C, D, E
         
+        // Data Penjualan Toshiba dari laporan_penjualan_komputer_detail.md (Januari-Desember)
+        const TOSHIBA_SALES_DATA = [
+            { month: "Januari", unit: 745, price: 6500000 },
+            { month: "Februari", unit: 775, price: 6500000 },
+            { month: "Maret", month: "Maret", unit: 801, price: 6500000 },
+            { month: "April", unit: 789, price: 6500000 },
+            { month: "Mei", unit: 801, price: 6500000 },
+            { month: "Juni", unit: 925, price: 6500000 },
+            { month: "Juli", unit: 887, price: 6500000 },
+            { month: "Agustus", unit: 911, price: 6500000 },
+            { month: "September", unit: 875, price: 6500000 },
+            { month: "Oktober", unit: 890, price: 6500000 },
+            { month: "November", unit: 950, price: 6500000 },
+            { month: "Desember", unit: 1050, price: 6500000 }
+        ];
+
+        // Data Penjualan Multi-Merek dari Analisis_Penjualan.md (Januari-September)
+        const MULTI_BRAND_SALES_DATA = [
+            { month: "Januari", thosiba: 745, compaq: 1256, accer: 256 },
+            { month: "Februari", thosiba: 775, compaq: 1126, accer: 512 },
+            { month: "Maret", thosiba: 801, compaq: 987, accer: 426 },
+            { month: "April", thosiba: 789, compaq: 1260, accer: 511 },
+            { month: "Mei", thosiba: 801, compaq: 998, accer: 126 },
+            { month: "Juni", thosiba: 925, compaq: 1356, accer: 456 },
+            { month: "Juli", thosiba: 887, compaq: 1269, accer: 398 },
+            { month: "Agustus", thosiba: 911, compaq: 998, accer: 398 },
+            { month: "September", thosiba: 875, compaq: 1120, accer: 502 }
+        ];
+
+        // Data for BAB 4 VLOOKUP example (Table Array)
+        const VLOOKUP_TABLE_DATA = [
+            { code: "LT001", product: "Laptop Core i5", price: 8500000 },
+            { code: "MN002", product: "Monitor 24 inch", price: 2300000 },
+            { code: "KB003", product: "Keyboard Mekanik", price: 750000 }
+        ];
+
         // Function to convert column index (0-based) to Excel letter (A, B, C...)
         const getColLetter = (index) => String.fromCharCode(65 + index);
 
-        // Function to create the spreadsheet table
+        // Function to create the spreadsheet table and pre-fill data for specific tabs
         function createSpreadsheet(containerId) {
             const container = document.getElementById(containerId);
             if (!container) return;
@@ -662,6 +696,129 @@
                     input.id = `${getColLetter(j)}${i}_${containerId}`; 
                     input.setAttribute('data-coord', `${getColLetter(j)}${i}`);
                     
+                    // --- Pre-fill data for BAB 3 ---
+                    if (containerId === 'spreadsheet-bab3') {
+                        // Headers (Row 1 & 2)
+                        if (i === 1) {
+                            if (j === 0) input.value = 'BULAN';
+                            if (j === 1) input.value = 'UNIT PENJUALAN';
+                            if (j === 2) input.value = 'HARGA UNIT (Rp)';
+                            if (j === 3) input.value = 'NILAI PENJUALAN (Rp)';
+                            if (j <= 3) input.style.fontWeight = 'bold'; // Highlight headers
+                        }
+                        // Data Rows (Row 3 to 14)
+                        if (i >= 3 && i <= 14) {
+                            const dataIndex = i - 3;
+                            if (dataIndex < TOSHIBA_SALES_DATA.length) {
+                                if (j === 0) input.value = TOSHIBA_SALES_DATA[dataIndex].month;
+                                if (j === 1) input.value = TOSHIBA_SALES_DATA[dataIndex].unit;
+                                if (j === 2) input.value = TOSHIBA_SALES_DATA[dataIndex].price; // Harga Unit
+                            }
+                            // Highlight D3 (First cell for formula input)
+                            if (i === 3 && j === 3) {
+                                input.classList.add('highlight-input');
+                            }
+                        }
+                        // Summary Row (Row 15)
+                        if (i === 15) {
+                            if (j === 2) input.value = 'TOTAL';
+                            if (j === 3) {
+                                input.classList.add('highlight-input'); // Highlight D15 (SUM formula input)
+                            }
+                        }
+                        // Average Row (Row 16)
+                        if (i === 16) {
+                            if (j === 0) input.value = 'Rata-rata';
+                            if (j === 1) {
+                                input.classList.add('highlight-input'); // Highlight B16 (AVERAGE formula input)
+                            }
+                        }
+                    }
+                    // --- End Pre-fill for BAB 3 ---
+
+
+                    // --- Pre-fill data for BAB 4 ---
+                    if (containerId === 'spreadsheet-bab4') {
+                        // Data Penjualan (IF Example)
+                        if (i === 2) { 
+                            if (j === 0) input.value = 'NAMA SALES';
+                            if (j === 1) input.value = 'UNIT TERJUAL';
+                            if (j === 2) input.value = 'STATUS BONUS';
+                        }
+                        if (i === 3) {
+                            if (j === 0) input.value = 'Dina';
+                            if (j === 1) input.value = '120';
+                            if (j === 2) input.classList.add('highlight-input'); // C3: IF Formula
+                        }
+                        if (i === 4) {
+                            if (j === 0) input.value = 'Andi';
+                            if (j === 1) input.value = '85';
+                        }
+                        
+                        // VLOOKUP Headers (Row 6)
+                        if (i === 6) { 
+                            if (j === 0) input.value = 'KODE PRODUK';
+                            if (j === 1) input.value = 'NAMA PRODUK';
+                            if (j === 2) input.value = 'HARGA SATUAN';
+                            if (j <= 2) input.classList.add('vlookup-table-header');
+                        }
+                        
+                        // VLOOKUP Table Array (A7:C9)
+                        if (i >= 7 && i <= 9) {
+                            const dataIndex = i - 7;
+                            if (dataIndex < VLOOKUP_TABLE_DATA.length) {
+                                if (j === 0) input.value = VLOOKUP_TABLE_DATA[dataIndex].code;
+                                if (j === 1) input.value = VLOOKUP_TABLE_DATA[dataIndex].product;
+                                if (j === 2) input.value = VLOOKUP_TABLE_DATA[dataIndex].price;
+                                if (j <= 2) input.classList.add('vlookup-table-data');
+                            }
+                        }
+
+                        // VLOOKUP Query Area (Row 11)
+                        if (i === 11) {
+                            if (j === 0) input.value = 'PENCARIAN (Input Kode):';
+                            if (j === 1) input.value = VLOOKUP_TABLE_DATA[0].code; // B11: Sample input for lookup value
+                            if (j === 3) input.value = 'HARGA DITEMUKAN:';
+                            if (j === 4) input.classList.add('highlight-input'); // E11: VLOOKUP Formula
+                        }
+                    }
+                    // --- End Pre-fill for BAB 4 ---
+                    
+                    // --- Pre-fill data for BAB 6 ---
+                    if (containerId === 'spreadsheet-bab6') {
+                        // Headers (Row 1)
+                        if (i === 1) {
+                            if (j === 0) input.value = 'BULAN';
+                            if (j === 1) input.value = 'THOSIBA';
+                            if (j === 2) input.value = 'COMPAQ';
+                            if (j === 3) input.value = 'ACCER';
+                            if (j <= 3) input.style.fontWeight = 'bold'; // Highlight headers
+                        }
+                        // Data Rows (Row 2 to 10)
+                        if (i >= 2 && i <= 10) {
+                            const dataIndex = i - 2;
+                            if (dataIndex < MULTI_BRAND_SALES_DATA.length) {
+                                if (j === 0) input.value = MULTI_BRAND_SALES_DATA[dataIndex].month;
+                                if (j === 1) input.value = MULTI_BRAND_SALES_DATA[dataIndex].thosiba;
+                                if (j === 2) input.value = MULTI_BRAND_SALES_DATA[dataIndex].compaq;
+                                if (j === 3) input.value = MULTI_BRAND_SALES_DATA[dataIndex].accer;
+                            }
+                        }
+                        // Total Row (Row 11)
+                        if (i === 11) {
+                            if (j === 0) input.value = 'TOTAL';
+                            if (j === 1) input.value = '7509';
+                            if (j === 2) input.value = '11370';
+                            if (j === 3) input.value = '3585';
+                            if (j <= 3) input.style.fontWeight = 'bold'; 
+                        }
+                        
+                    }
+                    // --- End Pre-fill for BAB 6 ---
+
+
+                    // Add other pre-fill data based on the full module logic if needed...
+
                     td.appendChild(input);
                     tr.appendChild(td);
                 }
@@ -710,8 +867,8 @@
             createSpreadsheet('spreadsheet-bab9');
             createSpreadsheet('spreadsheet-bab10'); 
 
-            // 2. Set initial tab
-            showTab('bab10'); // Tetap di BAB 10 setelah selesai
+            // 2. Set initial tab to BAB 6 (default for this session)
+            showTab('bab6');
         };
 
     </script>
